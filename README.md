@@ -1,3 +1,3 @@
 # NielsenLab
 
-To je testni projekt
+Testni projekt, ki se bo uporabljal za parsanje XML datoteke.
