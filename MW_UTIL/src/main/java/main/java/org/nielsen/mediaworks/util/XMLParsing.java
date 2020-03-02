@@ -6,7 +6,7 @@ public class XMLParsing {
 	
 	public static void povleciDatoteko(boolean btnPressed) {
 		if(btnPressed && !enKlik) {
-			System.out.println("dela");
+			System.out.println("dela!");
 			enKlik = true;
 		}
 	}
