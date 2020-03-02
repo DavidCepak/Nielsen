@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class Listener implements MouseListener {
 
-	public static Point mouse;
+	public static Point mouse = new Point(0, 0);
 	
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -26,12 +26,12 @@ public class Listener implements MouseListener {
 
 	
 	public void mousePressed(MouseEvent e) {
-		mouse = new Point(e.getX(), e.getY());
+		mouse.setLocation(e.getX(), e.getY());
 	}
 
 	
 	public void mouseReleased(MouseEvent e) {
-		
+		mouse = new Point(0, 0);
 	}
 
 }

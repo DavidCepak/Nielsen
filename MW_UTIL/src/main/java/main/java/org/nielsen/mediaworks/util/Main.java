@@ -8,9 +8,10 @@ public class Main extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public static Dimension size = new Dimension(800, 600);
+	public static Dimension realSize;
 	
 	public Main() {
-		add(new Graphics());
+		add(new Grafika());
 		
 		setTitle("XML Parsanje");
 		setPreferredSize(size);
@@ -20,7 +21,11 @@ public class Main extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
-		addMouseListener(new Listener());
+		realSize = getContentPane().getSize();
+		setPreferredSize(realSize);
+		pack();
+		//listenerji
+		getContentPane().addMouseListener(new Listener());
 	}
 	
 	public static void main(String[] args) {
