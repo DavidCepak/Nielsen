@@ -27,7 +27,7 @@ public class Grafika extends JComponent {
 			btnPressed[0] = true;
 			XMLParsing.povleciDatoteko(btnPressed[0]);
 			
-			g.setColor(Color.CYAN);
+			g.setColor(new Color(0, 0, 0, 50));
 			g.fillRect(Main.realSize.width / 2 - okno.width / 2, Main.realSize.height * 3 / 4 - okno.height / 2, okno.width, okno.height);
 		} else {
 			btnPressed[0] = false;
