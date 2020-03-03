@@ -25,7 +25,7 @@ public class Grafika extends JComponent {
 		btn[0] = new Rectangle(Main.realSize.width / 2 - okno.width / 2, Main.realSize.height * 3 / 4 - okno.height / 2, okno.width, okno.height);
 		if(btn[0].contains(Listener.mouse)) {
 			btnPressed[0] = true;
-			XMLParsing.povleciDatoteko(btnPressed[0]);
+//			XMLParsing.povleciDatoteko(btnPressed[0]);
 			
 			g.setColor(new Color(0, 0, 0, 50));
 			g.fillRect(Main.realSize.width / 2 - okno.width / 2, Main.realSize.height * 3 / 4 - okno.height / 2, okno.width, okno.height);
