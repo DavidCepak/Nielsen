@@ -27,7 +27,7 @@ public class XMLParsing {
 			XPath xPath =  XPathFactory.newInstance().newXPath();
 
 			
-			String expression = "/Employees/Employee[@emplid='1111']/email";
+			String expression = "/Employees/Employee[age > 5]/firstname";
 			String email = xPath.compile(expression).evaluate(xmlDocument);
 			System.out.println(email);
 			

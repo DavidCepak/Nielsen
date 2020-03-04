@@ -34,9 +34,6 @@ public class Main extends JFrame {
 		String pot = "C:\\Users\\frank\\eclipse-workspace\\ProjektNiealsen\\Nielsen\\MW_UTIL\\res\\test.xml";
 		parsaj.parsajDatoteko(pot);
 		
-		
-		
-		
 	}
 
 }
