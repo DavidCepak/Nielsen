@@ -25,14 +25,12 @@ public class XMLParsing {
 			Document xmlDocument = builder.parse(file);
 
 			XPath xPath =  XPathFactory.newInstance().newXPath();
-
 			
-			String expression = "/server/management/security-realms[@name = 'ManagementRealm']/secirity-realm";
+			String expression = "/server/extensions/extension";
 			NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
-			System.out.println(expression);
+			System.out.println("Število stvari:" + nodeList.getLength());
 			for (int i = 0; i < nodeList.getLength(); i++) {
-				System.out.println(i);
-			    System.out.println(nodeList.item(i).getFirstChild().getNodeValue()); 
+			    System.out.println(nodeList.item(i).getNodeName() + "=\"" + nodeList.item(i).getTextContent().trim() + "\"");
 			}
 			
 			
