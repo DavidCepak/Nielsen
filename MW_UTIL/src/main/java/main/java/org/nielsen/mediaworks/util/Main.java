@@ -8,6 +8,8 @@ public class Main {
 		String pot = "C:\\Users\\frank\\eclipse-workspace\\ProjektNiealsen\\Nielsen\\MW_UTIL\\res\\standalone-full.xml";
 		parsaj.parsajDatoteko(pot);
 		
+		parsaj.poveziDatabase();
+		
 	}
 
 }

@@ -1,6 +1,8 @@
 package main.java.org.nielsen.mediaworks.util;
 
 import java.io.*;
+import java.sql.*;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -12,7 +14,9 @@ import javax.xml.xpath.XPathFactory;
 
 public class XMLParsing {
 	
-	public static boolean enKlik = false;
+	public String databaseURL;
+	public String username;
+	public String password;
 	
 	public void parsajDatoteko(String pot) {
 		try {
@@ -26,12 +30,19 @@ public class XMLParsing {
 
 			XPath xPath =  XPathFactory.newInstance().newXPath();
 			
-			String expression = "/server/extensions/extension";
-			NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
-			System.out.println("Število stvari:" + nodeList.getLength());
-			for (int i = 0; i < nodeList.getLength(); i++) {
-			    System.out.println(nodeList.item(i).getNodeName() + "=\"" + nodeList.item(i).getTextContent().trim() + "\"");
-			}
+			String expression = "/server/profile/subsystem/datasources/datasource/connection-url";
+			
+			databaseURL = xPath.compile(expression).evaluate(xmlDocument);
+			
+			//username
+			expression = "/server/profile/subsystem/datasources/datasource/security/user-name";
+			
+			username = xPath.compile(expression).evaluate(xmlDocument);
+			
+			//password
+			expression = "/server/profile/subsystem/datasources/datasource/security/password";
+			
+			password = xPath.compile(expression).evaluate(xmlDocument);
 			
 			
 			} catch(Exception e) {
@@ -39,5 +50,13 @@ public class XMLParsing {
 			}
 	}
 	
+	//za povezavo z bazo
+	public void poveziDatabase() {
+		try {
+			Connection db = DriverManager.getConnection(databaseURL, username, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
