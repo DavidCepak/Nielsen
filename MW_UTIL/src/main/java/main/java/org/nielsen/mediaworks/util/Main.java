@@ -9,7 +9,7 @@ public class Main {
 		parsaj.parsajDatoteko(pot);
 		
 		parsaj.poveziDatabase();
-		
+		parsaj.poveziHTTP();
 	}
 
 }
