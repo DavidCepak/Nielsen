@@ -6,10 +6,10 @@ public class Main {
 		XMLParsing parsaj = new XMLParsing();
 		
 		String pot = "C:\\Users\\frank\\eclipse-workspace\\ProjektNiealsen\\Nielsen\\MW_UTIL\\res\\standalone-full.xml";
-		parsaj.parsajDatoteko(pot);
+		parsaj.getData(pot);
 		
-		parsaj.poveziDatabase();
-		parsaj.poveziHTTP();
+		//parsaj.poveziDatabase();
+		//parsaj.poveziHTTP();
 	}
 
 }

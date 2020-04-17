@@ -3,6 +3,7 @@ package main.java.org.nielsen.mediaworks.util;
 import java.io.*;
 import java.net.*;
 import java.sql.*;
+import java.util.*;
 
 import org.w3c.dom.*;
 
@@ -16,7 +17,12 @@ public class XMLParsing {
 	public String username;
 	public String password;
 	
-	public void parsajDatoteko(String pot) {
+	public ArrayList<String> vse = new ArrayList<String>();
+	
+	//to je cačasno ampak vse sparsano od system-properties
+	private String[] podatki = {"portal.rest.restbridgeurl", "collections.multicountry.support.debug", "fromqueue", "upmulticountriessupport.concconsumer", "4", "8", "6", "3", "9", "mcs.root.url", "mcs.root.path", "mcs.root.resource.path", "metermanagement.gr.url"};
+	
+	public void getData(String pot) {
 		try {
 			FileInputStream file = new FileInputStream(new File(pot));
 			DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -36,9 +42,18 @@ public class XMLParsing {
 			expression = "/server/profile/subsystem/datasources/datasource/security/password";
 			password = xPath.compile(expression).evaluate(xmlDocument);
 			
-			
+			//http
 			expression = "/server/system-properties/property[@name = 'nanocollectionfacilityURL']/@value";
 			http = xPath.compile(expression).evaluate(xmlDocument);
+			
+			//od tle naprej je zacasen arraylist
+			for(int i = 0; i < podatki.length; i++) {
+				expression = "/server/system-properties/property[@name = '"+ podatki[i] +"']/@value";
+				vse.add(xPath.compile(expression).evaluate(xmlDocument));
+				System.out.println(vse.get(i));
+			}
+			
+			
 			
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -50,12 +65,6 @@ public class XMLParsing {
 		try {
 			Connection db = DriverManager.getConnection(databaseURL, username, password);
 			
-			if (db != null) {
-                System.out.println("Connected to the database!");
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
